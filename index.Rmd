@@ -1,6 +1,6 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
+author: "Tracy Das"
 description: "My final project"
 output:
   distill::distill_article:
@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring data related to human trafficking rates in the United States. I want to focus on how the U.S-Mexican boarder is one of the main transports for human trafficking compared to other boarders and countries globally. I also want to analyze the amount of human trafficking cases tehre are around the world.
