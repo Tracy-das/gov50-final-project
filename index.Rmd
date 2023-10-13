@@ -11,4 +11,22 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to human trafficking rates in the United States. I want to focus on how the U.S-Mexican boarder is one of the main transports for human trafficking compared to other boarders and countries globally. I also want to analyze the amount of human trafficking cases tehre are around the world.
+I am interested in exploring data related to human trafficking rates in the United States. I want to focus on how the U.S-Mexican boarder is one of the main transports for human trafficking compared to other boarders and countries globally. I also want to analyze the amount of human trafficking cases there are around the world.
+
+```{r}
+##Load Data
+ht_data <- read.csv("Human_trafficking_data.csv") 
+```
+
+## Writing Proposal
+
+Which countries are the biggest consumers of human trafficking? I hypothesize that human trafficking is most common among nations in numerous debts and have the potential to exploit victims with loopholes in their governments. Variables that influence the rate of human trafficking among countries include but are not limited to  the sex of human trafficking victims, legalization of prostitution within nations, border control guidelines, forms of exploitation (sexual violence, forced labour, etc), age, and GDP. Our outcome variable of interest in this study will be the rates of human trafficking among each nation. Potential observed patterns in my data that could help prove my thesis could include:
+-Correlation between high levels of national debt and increased instances of human trafficking
+-Identification of a higher prevalence of human trafficking in countries with weaker governance structures and loopholes in law enforcement.
+-nations facing economic crises due to debts are more likely to turn a blind eye to human trafficking activities within their borders.
+-nations where work is commonly exploited could have a pattern of human trafficking to help boost the GDP
+Conversely, some patterns that could disprove my hypothesis in the data could include:
+-Lack of correlation between national debt levels and incidences of human trafficking.
+-Instances of significant human trafficking in countries with sound economic conditions and strong governance systems.
+-Evidence indicating that human trafficking is equally prevalent in nations regardless of their debt status or the strength of their governance structures.
+
