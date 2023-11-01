@@ -110,12 +110,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Gov 50 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Tracy Das"]}]}]},{"type":"character","attributes":{},"value":["My final project"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Gov 50 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Tracy Das"]}]}]},{"type":"character","attributes":{},"value":["My final project"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["markdown"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["wrap"]}},"value":[{"type":"integer","attributes":{},"value":[72]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Human_trafficking_data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Human_trafficking_data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1518,7 +1518,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in exploring data related to human trafficking rates in the United States. I want to focus on how the U.S-Mexican boarder is one of the main transports for human trafficking compared to other boarders and countries globally. I also want to analyze the amount of human trafficking cases there are around the world.</p>
+<p>I am interested in exploring data related to human trafficking rates in
+the United States. I want to focus on how the U.S-Mexican boarder is one
+of the main transports for human trafficking compared to other boarders
+and countries globally. I also want to analyze the amount of human
+trafficking cases there are around the world.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>##Load Data</span></span>
@@ -1526,15 +1530,52 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 </div>
 <h2 id="writing-proposal">Writing Proposal</h2>
-<p>Which countries are the biggest consumers of human trafficking? I hypothesize that human trafficking is most common among nations in numerous debts and have the potential to exploit victims with loopholes in their governments. Variables that influence the rate of human trafficking among countries include but are not limited to the sex of human trafficking victims, legalization of prostitution within nations, border control guidelines, forms of exploitation (sexual violence, forced labour, etc), age, and GDP. Our outcome variable of interest in this study will be the rates of human trafficking among each nation. Potential observed patterns in my data that could help prove my thesis could include:
--Correlation between high levels of national debt and increased instances of human trafficking
--Identification of a higher prevalence of human trafficking in countries with weaker governance structures and loopholes in law enforcement.
--nations facing economic crises due to debts are more likely to turn a blind eye to human trafficking activities within their borders.
--nations where work is commonly exploited could have a pattern of human trafficking to help boost the GDP
-Conversely, some patterns that could disprove my hypothesis in the data could include:
--Lack of correlation between national debt levels and incidences of human trafficking.
--Instances of significant human trafficking in countries with sound economic conditions and strong governance systems.
--Evidence indicating that human trafficking is equally prevalent in nations regardless of their debt status or the strength of their governance structures.</p>
+<p>Which countries are the biggest consumers of human trafficking? I
+hypothesize that human trafficking is most common among nations in
+numerous debts and have the potential to exploit victims with loopholes
+in their governments. Variables that influence the rate of human
+trafficking among countries include but are not limited to the sex of
+human trafficking victims, legalization of prostitution within nations,
+border control guidelines, forms of exploitation (sexual violence,
+forced labour, etc), age, and GDP. Our outcome variable of interest in
+this study will be the rates of human trafficking among each nation.
+Potential observed patterns in my data that could help prove my thesis
+could include:</p>
+<p>-Correlation between high levels of national debt and increased
+instances of human trafficking</p>
+<p>-Identification of a higher prevalence of human trafficking in countries
+with weaker governance structures and loopholes in law enforcement.</p>
+<p>-nations facing economic crises due to debts are more likely to turn a
+blind eye to human trafficking activities within their borders.</p>
+<p>-nations where work is commonly exploited could have a pattern of human
+trafficking to help boost the GDP.</p>
+<p>Conversely, some patterns that could disprove my hypothesis in the data
+could include:</p>
+<p>-Lack of correlation between national debt levels and incidences of
+human trafficking.</p>
+<p>-Instances of significant human trafficking in countries with sound
+economic conditions and strong governance systems.</p>
+<p>-Evidence indicating that human trafficking is equally prevalent in
+nations regardless of their debt status or the strength of their
+governance structures.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>Regions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>ht_data</span><span class='op'>$</span><span class='va'>Region</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>ht_data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Regions</span>, fill <span class='op'>=</span> <span class='va'>Regions</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Global Regions"</span>, y <span class='op'>=</span> <span class='st'>"Number of Human Trafficking Victims"</span>, title<span class='op'>=</span> <span class='st'>"Distribution of Human Trafficking by Region"</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#scale_fill_manual(values = c(Oceania = "steelblue1", Americas = "indianred1", Africa = "turquoise2", Asia = "orange", Europe = "maroon1", ` ` = "purple"))</span></span></code></pre>
+</div>
+</div>
+<p>This bar chart reveals the frequency of human trafficking by region.
+Globally, Europe holds the highest number of human trafficking victims
+compared to other global regions. Oceania consumes the least amount of
+human trafficking victims.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
