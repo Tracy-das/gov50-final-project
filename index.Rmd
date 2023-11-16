@@ -78,3 +78,14 @@ This bar chart reveals the frequency of human trafficking by region.
 Globally, Europe holds the highest number of human trafficking victims
 compared to other global regions. Oceania consumes the least amount of
 human trafficking victims.
+
+```{r}
+ht_data <- ht_data |>
+  group_by(Region)
+  summarize(ht_data) |>
+  mutate(Region) 
+
+ knitr::kable(ht_data, digits = 3)
+  
+
+```
