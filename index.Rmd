@@ -10,57 +10,32 @@ editor_options:
     wrap: 72
 ---
 
-## Project thoughts
-
-I am interested in exploring data related to human trafficking rates in
-the United States. I want to focus on how the U.S-Mexican boarder is one
-of the main transports for human trafficking compared to other boarders
-and countries globally. I also want to analyze the amount of human
-trafficking cases there are around the world.
-
 ```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
 ##Load Data
 ht_data <- read.csv("Human_trafficking_data.csv") 
 ```
 
-## Writing Proposal
+## The Global Issue of Human Trafficking
 
-Which countries are the biggest consumers of human trafficking? I
-hypothesize that human trafficking is most common among nations in
-numerous debts and have the potential to exploit victims with loopholes
-in their governments. Variables that influence the rate of human
-trafficking among countries include but are not limited to the sex of
-human trafficking victims, legalization of prostitution within nations,
-border control guidelines, forms of exploitation (sexual violence,
-forced labour, etc), age, and GDP. Our outcome variable of interest in
-this study will be the rates of human trafficking among each nation.
-Potential observed patterns in my data that could help prove my thesis
-could include:
+I believe that Human trafficking is a topic not discussed enough and has
+sparked my interest in analyzing trafficking victim rates on a global
+scale. If we opened discussions on which global regions occupy the
+largest amount of human trafficking, then we can identify which
+countries have the most and highlight reasons why they are exploited. I
+will also be diving into whether or not the rate of victims have
+increased or decreased as years go by.
 
--Correlation between high levels of national debt and increased
-instances of human trafficking
-
--Identification of a higher prevalence of human trafficking in countries
-with weaker governance structures and loopholes in law enforcement.
-
--nations facing economic crises due to debts are more likely to turn a
-blind eye to human trafficking activities within their borders.
-
--nations where work is commonly exploited could have a pattern of human
-trafficking to help boost the GDP.
-
-Conversely, some patterns that could disprove my hypothesis in the data
-could include:
-
--Lack of correlation between national debt levels and incidences of
-human trafficking.
-
--Instances of significant human trafficking in countries with sound
-economic conditions and strong governance systems.
-
--Evidence indicating that human trafficking is equally prevalent in
-nations regardless of their debt status or the strength of their
-governance structures.
+I hypothesize that human trafficking is most common in Africa and the
+rate of victims overtime has tremendously increased. Variables that
+influence the rate of human trafficking among countries include but are
+not limited to the sex of human trafficking victims, region, 
+legalization of prostitution within nations, border control guidelines,
+forms of exploitation (sexual violence, forced labour, etc), age, and
+GDP. Our outcome variable of interest in this study will be the rates of
+human trafficking among each nation.
 
 ```{r}
 library(tidyverse)
@@ -68,24 +43,148 @@ library(ggplot2)
 
 Regions <- as.factor(ht_data$Region)
 
-ggplot(ht_data, aes(x = Regions, fill = Regions)) + geom_bar() + labs(x = "Global Regions", y = "Number of Human Trafficking Victims", title= "Distribution of Human Trafficking by Region")
+ggplot(ht_data, aes(x = Regions, fill = Regions)) +
+  geom_bar() + 
+  labs(x = "Global Regions", y = "Number of Human Trafficking Victims", title= "Distribution of Human Trafficking by Region")
   
 #scale_fill_manual(values = c(Oceania = "steelblue1", Americas = "indianred1", Africa = "turquoise2", Asia = "orange", Europe = "maroon1", ` ` = "purple"))
-  
 ```
 
-This bar chart reveals the frequency of human trafficking by region.
-Globally, Europe holds the highest number of human trafficking victims
-compared to other global regions. Oceania consumes the least amount of
-human trafficking victims.
+My data source comes from the United Nations Office in Drugs & Crime
+(UNDOC) detected trafficking in persons data set.
+(<https://dataunodc.un.org/dp-trafficking-persons> ). This bar chart
+reveals the frequency of human trafficking by region. My research design
+is a before-and-after project because we are utilizing data reported
+between the span of multiple years. (2017-2021).
+
+The dependent variable in this context is the number of human
+trafficking victims and our independent variables measured are the
+specific global regions (Americas, Asia, Africa, Europe, and Oceania),
+years, and sex. These categories are found within the
+human_trafficking_data.csv.  
+
+From the barch chart above, we see that Europe holds the highest number
+of human trafficking victims compared to other global regions. Oceania
+holds the least amount of human trafficking victims. In my opinion, the
+reason for this is due to the population in Oceania. Oceania's
+populations is fairly small and does not have many countries whereas
+Europe has more nations where victims are reporting their trafficking
+experiences. Asia is the second most global region with the highest
+reported amount of human trafficking victims. Africa is ranked third and
+the Americas is ranked fourth.
+
+## Regression & Results
+
+```{r}
+library(modelsummary)
+
+ht_data <- ht_data |>
+  mutate(Rate = if_else(txtVALUE == "<5", 1, as.numeric(txtVALUE)))
+
+fit <- lm(Rate ~ Year + Regions + Category, data = ht_data)
+summary(fit)
+
+
+modelsummary::modelsummary(fit,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
+The main coefficient of interest in my regression is the number of human
+trafficking victims on a global scale. The original data set included
+"\<5" in the txtValue column (rate of human trafficking victims per
+country) but I mutated this rate into 1 for my dependent variable to
+showcase regression.
+
+Holding all other variables including years constant, switching Africa
+(our intercept) to Asia, our human trafficking victim rates would
+increase by 21.787 individuals per year. Comparing human trafficking
+rates of Africa to the Americas, there are 23.984 more victims per year
+in the Americas. Furthermore, Europe has 27.591 more human trafficking
+victims per year compared to Africa and Oceania has 8.953 less human
+trafficking victims per year compared to Africa.
+
+After the regression, the years that went by did not have a great
+significance regarding human trafficking rates. However, we can see from
+the regression that the regions held the greatest impact on my dependent
+variable because the global regions have the highest coefficients in my
+regression table.
+
+According to my regression table, the years variable had a coefficient
+of .290 and P-value of .855. I would accept the null for years since the
+P-value is greater than my chosen alpha of 0.05. Therefore, years is not
+statistically significant and we should not interpret it causally.
+However, I would reject the null for Regions since the P-values for
+Asia, the Americas, and Europe were \<0.001. These P-values are less
+than my selected alpha of 0.05. For the most part, Global regions are
+statistically significant and we should interpret it causally. For
+Oceania, I would accept the null because the P-value is 0.343, which is
+less than my selected of 0.05. This implies that it is not statistically
+significant.
 
 ```{r}
 ht_data <- ht_data |>
-  group_by(Region)
-  summarize(ht_data) |>
-  mutate(Region) 
+  mutate(Asia = if_else(Region == "Asia", 1, 0),
+         Americas = if_else(Region == "Americas", 1, 0),
+         Africa = if_else(Region == "Africa", 1, 0),
+         Europe = if_else(Region == "Europe", 1, 0),
+         Oceania = if_else(Region == "Oceania", 1, 0))
 
- knitr::kable(ht_data, digits = 3)
-  
 
+
+ht_data |> 
+  ggplot(mapping = aes(x = Year, 
+                     y = Rate, na.rm = TRUE)) +
+geom_jitter(alpha = 0.5) +
+geom_smooth() + 
+  facet_wrap(~ Region) + 
+labs(x = "Years",
+       y = "Number of Human Trafficking Victims")
 ```
+
+As displayed above, is the number of global human trafficking rates by
+region as the years have gone by. In addition, by looking at the graphs
+we can see some nations have a large amount of reported Human
+Trafficking victims, yet globally, there are nations that have lower
+rates of trafficking victims as highlighted by the blue line which is
+the line of best fit. As the years progress, the line of best fit does
+not drastically increase or decrease.
+
+## Conclusion
+
+All in all, human trafficking is unfortunately prevalent among nations
+across the world. Whether it is just one victim or over a million in a
+nation, individuals are being exploited either for forced labor, sexual
+pleasure, or other forms of labor which can include but are not limited
+to fraud, coercion, debt bondage, and more. Globally, Europe has the
+most reported human trafficking rates. If given more time and money, I
+would have liked to dive deeper into these categories included in other
+data sets in order to see which form of exploitation is more common,
+where, and if countries facing tremendous debt have an impact on the
+amount of victims exported and imported from their nation. I would also
+try to identify if there is a higher prevalence of human trafficking in
+countries with weaker governance structures and loopholes in law
+enforcement.
+
+The limitations I faced upon this problem and data set was the
+chronically under reported victims of human trafficking. The rates of
+under reported human trafficking victims varies globally, in which I
+have no control over. There are some people who may be more open about
+their story and the region they are located is going to affect the rate
+within this data set. We are not entirely sure if Europe actually holds
+the most amount of victims because not all victims are able to report
+their cases.
+
+My original hypothesis also was not proven with a drastic number or
+regression. As years progressed, human trafficking rates were still
+prevalent but there is a steady line of best fit, indicating how rates
+did not fluctuate drastically. This poses a potential threat to
+inference. Time (years) is not a cause or acts upon human trafficking
+rates increasing or decreasing as I anticipated. There was neither a big
+increase or decrease and statistically insignificant given the P-value
+of .855 when my chosen alpha was 0.05. With more time, I could have also
+conducted research on human trafficking rates using a csv with data that
+covered a larger time span and not just three years (2017-2021).
+
+\
